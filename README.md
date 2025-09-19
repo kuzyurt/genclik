@@ -11,45 +11,94 @@ Eine moderne, vollständig ausgestattete Website für die ATIB Gemeinde Felixdor
 
 **Detaillierte Funktionsübersicht:** [www.atibfelixdorf.org/info](https://www.atibfelixdorf.org/info)
 
-## 🚀 Features
+# ATIB Felixdorf Website
 
-### 🎯 Hauptfunktionen
-- **Event-Management** - Veranstaltungen mit Anmeldesystem und E-Mail-Bestätigungen
-- **Galerie-System** - Kategorisierte Foto- und Medienverwaltung
-- **Team-Verwaltung** - Ansprechpartner und Rollen
-- **Kontakt-System** - Nachrichten mit automatischen E-Mail-Benachrichtigungen
-- **News-Bereich** - Aktuelle Mitteilungen und Ankündigungen
-- **Shop-System** - Produktkatalog und Bestellverwaltung
+Dies ist das offizielle Repository für die **[ATIB Felixdorf](https://www.atibfelixdorf.org/)**.  
+Die Website wurde mit **React** + **Next.js**, **Prisma** und **PostgreSQL** entwickelt.  
+Sie dient als zentrale Plattform für Veranstaltungen, Galerie, Team-Übersicht, Shop-Informationen und die interne Verwaltung der Moschee.
 
-### 👥 Benutzerrollen & Berechtigungen
-- **Admin** - Vollzugriff auf alle Verwaltungsfunktionen
-- **Lehrer** - Stundenplan-Management und Nachrichtenverwaltung
-- **Schüler** - Stundenplan-Einsicht und Nachrichten
-- **Mitglieder** - Grundfunktionen und Event-Anmeldungen
+---
 
-### 🛠️ Admin-Features
-- **Dashboard** - Übersicht über Statistiken und Aktivitäten
-- **Mail-System** - SMTP/IMAP Integration für professionelle E-Mail-Kommunikation
-- **Benutzer-Management** - Rollen, Berechtigungen und Benutzerdaten
-- **Settings-Management** - Dynamische Konfiguration ohne Code-Änderungen
-- **Statistiken** - Detaillierte Auswertungen und Reports
-- **Stundenplan-System** - Für Religionsunterricht und Kurse
-- **Bug-Report-System** - Benutzerfeedback und Fehlerbericht
-- **Event-Management** - Veranstaltungen mit Anmeldesystem und E-Mail-Bestätigungen
-- **Galerie-System** - Kategorisierte Foto- und Medienverwaltung
-- **Team-Verwaltung** - Ansprechpartner und Rollen
-- **Kontakt-System** - Nachrichten mit automatischen E-Mail-Benachrichtigungen
-- **News-Bereich** - Aktuelle Mitteilungen und Ankündigungen
-- **Shop-System** - Produktkatalog und Bestellverwaltung
-- **Schüler-Management** - Benutzerdaten und Anmeldungen
+## 🌐 Öffentliche Bereiche
 
+### 🏠 Startseite (`/`)
+- Übersicht über aktuelle Veranstaltungen, Galerie-Vorschau und Team-Vorschau.
+- Komponenten für **Events**, **Galerie** und **Team**.
 
-### 🎨 Design & UX
-- **Responsive Design** - Optimiert für Desktop, Tablet und Mobile
-- **Dark/Light Mode** - Automatische Theme-Umschaltung
-- **Mehrsprachigkeit** - Google Translate Integration
-- **Modern UI** - Radix UI Components mit Tailwind CSS
-- **Accessibility** - WCAG-konforme Bedienbarkeit
+### 📅 Veranstaltungen (`/events`)
+- Alle Veranstaltungen mit Kategorien.
+- Möglichkeit zur Anmeldung durch Eingabe von:
+  - E-Mail-Adresse, Name (Pflichtfelder)
+  - Adresse, Telefonnummer, Alter (optional)
+- Nach der Anmeldung erhalten Nutzer eine Bestätigungsmail von `info@atibfelixdorf.org` (angenommen/abgelehnt).
+
+### 🖼️ Galerie (`/gallery`)
+- Bildergalerie mit Kategorien (Events, Allgemein, etc.).
+- Möglichkeit, einzelne Bilder in **Vollansicht** zu betrachten.
+
+### ℹ️ Über uns (`/Über uns`)
+- Mehrere Abschnitte mit Bildern zur Erklärung der Moschee.
+- Dynamisch erweiterbar (über das Admin-Interface).
+- Unterhalb: Teamübersicht mit Kategorien und Mitgliedern (inkl. Bild & Infos).
+
+### 🛒 Shop (`/shop`)
+- Produkte in Kategorien mit Bildern, Beschreibung & Preis.
+- Beim Anklicken erscheint eine größere Ansicht.
+- **Hinweis:** Derzeit kein Online-Kauf möglich – nur Info, dass das Produkt im Shop erhältlich ist.
+
+### 📩 Kontakt (`/kontakt`)
+- Formular zum Versenden von Nachrichten direkt an den Admin.
+
+### ℹ️ Info (`/info`)
+- Allgemeine Informationen über die Website.
+
+### 🌗 Header-Funktionen
+- **Tag/Nacht-Modus**
+- **Sprachoptionen:** Deutsch, Englisch, Türkisch (Google Translate integriert, weitere Sprachen möglich)
+- **Login/Sign-Up oder Profilanzeige** (abhängig vom Status)
+
+---
+
+## 👥 Benutzerrollen & Funktionen
+
+- **Mitglied**: Profilansicht & Bearbeitung, Status (aktiv/inaktiv).
+- **Schüler**: Profil + Stundenplan & Mailansicht.
+- **Lehrer**: Profil + Lehrermenü (Stundenplan bearbeiten, Mails verwalten, Mails senden).
+- **Mitarbeiter**: Wie Admin, aber ggf. eingeschränkte Rechte.
+- **Admin**: Voller Zugriff auf Admin-Dashboard.
+
+---
+
+## 🛠️ Admin-Interface (`/admin/`)
+
+Das Admin-Panel besteht aus **13 Bereichen** mit dynamischen Berechtigungen je nach User-Rolle.  
+Das Layout enthält eine Seitenleiste, Admin-Header (Sprache, Dark/Light-Mode, Passwort ändern, Link zur öffentlichen Seite).
+
+### 📋 Bereiche im Überblick
+
+1. **Dashboard** (`/admin/`) – Begrüßungsseite  
+2. **Events** – Kategorien & Events erstellen, Anmeldungen annehmen/ablehnen  
+3. **Galerie** – Kategorien & Bildblöcke/Einzelbilder verwalten  
+4. **Team** – Kategorien & Teammitglieder hinzufügen  
+5. **Lehrermenü** – Stundenpläne erstellen/bearbeiten, Pausen einfügen, Mails verwalten  
+6. **User-Management** – Nutzer bearbeiten, sperren, Mails an einzelne Nutzer oder Rollen senden (DB-gespeichert & per E-Mail versendet)  
+7. **Benutzer** – Kategorien & Subkategorien (Klassen) erstellen, Schüler & Eltern verwalten, PDF-Listen generieren  
+8. **Statistiken** – Events, Nutzer, Schüler, Galerie-Nutzung, Website-Zugriffe  
+9. **Einstellungen**  
+   - Website-Bereiche aktivieren/deaktivieren  
+   - Systemstatus abrufen  
+   - Inhalte von `/Über uns` verwalten  
+   - Berechtigungen für Admin-Bereiche setzen  
+   - Social Media Links, Impressum, AI-Modelle für Chatbot verwalten  
+10. **Kontakt** – Kontaktinformationen ändern  
+11. **Mails** –  
+   1. Kontakt-Nachrichten ansehen & beantworten  
+   2. Veranstaltungsanmeldungen verwalten  
+   3. Externe Nachrichten (z. B. an `info@atibfelixdorf.org`)  
+12. **News** – News-Artikel hinzufügen, bearbeiten, löschen  
+13. **Bugs/Ideen** – Fehler melden, Ideen einreichen, Priorität setzen & Status verwalten  
+
+---
 
 ## 🛠️ Tech Stack
 
