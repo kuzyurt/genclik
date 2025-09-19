@@ -2,7 +2,7 @@
 
 „Hinweis: Das offizielle Haupt-GitHub-Repository ist aus Sicherheitsgründen nicht öffentlich zugänglich.“
 
-# 🕌 ATIB Felixdorf - Gençlik Platform
+# 🕌 ATIB Felixdorf 
 
 Eine moderne, vollständig ausgestattete Website für die ATIB Gemeinde Felixdorf mit umfassendem Content-Management, Event-System und Benutzerverwaltung.
 
